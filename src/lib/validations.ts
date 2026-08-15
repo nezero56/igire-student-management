@@ -13,11 +13,13 @@ export type LoginFormData = z.infer<typeof loginSchema>;
 
 export const studentSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
+  studentId: z.string().min(1, "Student ID is required"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Enter a valid phone number"),
-  cohort: z.string().min(1, "Cohort is required"),
-  program: z.string().min(1, "Program is required"),
-  trainerId: z.string().min(1, "Trainer is required"),
+  gender: z.enum(["male", "female", "other"], { message: "Gender is required" }),
+  program: z.string().min(1, "Training program is required"),
+  registrationDate: z.string().min(1, "Registration date is required"),
+  status: z.enum(["active", "inactive", "graduated"], { message: "Status is required" }),
 });
 
 export type StudentFormData = z.infer<typeof studentSchema>;

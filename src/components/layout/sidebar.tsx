@@ -12,9 +12,9 @@ import {
   BarChart2,
   GraduationCap,
   CalendarCheck,
-  LogOut,
 } from "lucide-react";
 import type { Role } from "@/src/types";
+import { LogoutButton } from "@/src/components/layout/logout-button";
 
 interface NavItem {
   label: string;
@@ -23,28 +23,28 @@ interface NavItem {
 }
 
 const adminNav: NavItem[] = [
-  { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-  { label: "Students", href: "/admin/students", icon: Users },
-  { label: "Training", href: "/admin/training", icon: BookOpen },
-  { label: "Attendance", href: "/admin/attendance", icon: CalendarCheck },
-  { label: "Assignments", href: "/admin/assignments", icon: ClipboardList },
-  { label: "Performance", href: "/admin/performance", icon: BarChart2 },
-  { label: "Reports", href: "/admin/reports", icon: FileText },
+  { label: "Dashboard",    href: "/admin/dashboard",     icon: LayoutDashboard },
+  { label: "Participants", href: "/admin/participants",  icon: Users },
+  { label: "Training",     href: "/admin/training",      icon: BookOpen },
+  { label: "Attendance",   href: "/admin/attendance",    icon: CalendarCheck },
+  { label: "Assignments",  href: "/admin/assignments",   icon: ClipboardList },
+  { label: "Performance",  href: "/admin/performance",   icon: BarChart2 },
+  { label: "Reports",      href: "/admin/reports",       icon: FileText },
 ];
 
 const trainerNav: NavItem[] = [
-  { label: "Dashboard", href: "/trainer/dashboard", icon: LayoutDashboard },
-  { label: "Students", href: "/trainer/students", icon: Users },
-  { label: "Attendance", href: "/trainer/attendance", icon: CalendarCheck },
-  { label: "Assignments", href: "/trainer/assignments", icon: ClipboardList },
-  { label: "Performance", href: "/trainer/performance", icon: BarChart2 },
+  { label: "Dashboard",    href: "/facilitator/dashboard",   icon: LayoutDashboard },
+  { label: "Participants", href: "/facilitator/students",    icon: Users },
+  { label: "Attendance",   href: "/facilitator/attendance",  icon: CalendarCheck },
+  { label: "Assignments",  href: "/facilitator/assignments", icon: ClipboardList },
+  { label: "Performance",  href: "/facilitator/performance", icon: BarChart2 },
 ];
 
 const studentNav: NavItem[] = [
-  { label: "Dashboard", href: "/student/dashboard", icon: LayoutDashboard },
-  { label: "Profile", href: "/student/profile", icon: Users },
-  { label: "Courses", href: "/student/courses", icon: GraduationCap },
-  { label: "Attendance", href: "/student/attendance", icon: CalendarCheck },
+  { label: "Dashboard",   href: "/student/dashboard",   icon: LayoutDashboard },
+  { label: "Profile",     href: "/student/profile",     icon: Users },
+  { label: "Courses",     href: "/student/courses",     icon: GraduationCap },
+  { label: "Attendance",  href: "/student/attendance",  icon: CalendarCheck },
   { label: "Assignments", href: "/student/assignments", icon: ClipboardList },
   { label: "Performance", href: "/student/performance", icon: BarChart2 },
 ];
@@ -104,13 +104,7 @@ export function Sidebar({ role, userName }: SidebarProps) {
             <span className="text-sm font-medium text-gray-900">{userName}</span>
             <span className="text-xs text-gray-500 capitalize">{role}</span>
           </div>
-          <Link
-            href="/login"
-            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
-            aria-label="Sign out"
-          >
-            <LogOut className="h-4 w-4" />
-          </Link>
+          <LogoutButton />
         </div>
       </div>
     </aside>

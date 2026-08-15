@@ -1,9 +1,17 @@
+import { redirect } from "next/navigation";
+import { getSession } from "@/src/lib/auth";
 import { Sidebar } from "@/src/components/layout/sidebar";
 
-export default function StudentLayout({ children }: { children: React.ReactNode }) {
+export default async function StudentLayout({ children }: { children: React.ReactNode }) {
+  const session = await getSession();
+
+  if (!session || session.role !== "student") {
+    redirect("/login");
+  }
+
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
-      <Sidebar role="student" userName="Eric Manzi" />
+      <Sidebar role="student" userName={session.name} />
       <div className="flex flex-1 flex-col overflow-hidden">{children}</div>
     </div>
   );
